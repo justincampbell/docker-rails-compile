@@ -1,4 +1,5 @@
 FROM ruby:2.1.6
+MAINTAINER Justin Campbell <justin@justincampbell.me>
 
 # Bundler
 RUN gem install bundler --no-document
