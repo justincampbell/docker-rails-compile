@@ -14,6 +14,9 @@ RUN apt-get install -y nodejs
 # Bower
 RUN npm install -g bower
 
+# Ember CLI
+RUN npm install -g ember-cli
+
 # aws-cli
 RUN apt-get install -y unzip
 RUN curl https://s3.amazonaws.com/aws-cli/awscli-bundle.zip -o awscli-bundle.zip
