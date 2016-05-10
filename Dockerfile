@@ -8,7 +8,7 @@ RUN gem install bundler --no-document
 RUN gem install bundle_cache --no-document
 
 # Node.js
-RUN curl --silent --location https://deb.nodesource.com/setup_0.12 | bash -
+RUN curl --silent --location https://deb.nodesource.com/setup_6.x | bash -
 RUN apt-get install -y nodejs
 
 # Bower
