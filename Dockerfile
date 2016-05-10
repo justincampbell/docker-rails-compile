@@ -11,6 +11,9 @@ RUN gem install bundle_cache --no-document
 RUN curl --silent --location https://deb.nodesource.com/setup_0.12 | bash -
 RUN apt-get install -y nodejs
 
+# Bower
+RUN npm install -g bower
+
 # aws-cli
 RUN apt-get install -y unzip
 RUN curl https://s3.amazonaws.com/aws-cli/awscli-bundle.zip -o awscli-bundle.zip
