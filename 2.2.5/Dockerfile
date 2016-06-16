@@ -1,4 +1,4 @@
-FROM ruby
+FROM ruby:2.2.5
 MAINTAINER Justin Campbell <justin@justincampbell.me>
 
 # Bundler
