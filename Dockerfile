@@ -19,7 +19,24 @@ RUN echo '{ "allow_root": true }' > /root/.bowerrc
 RUN npm install -g ember-cli
 
 # aws-cli
-RUN apt-get install -y unzip
-RUN curl https://s3.amazonaws.com/aws-cli/awscli-bundle.zip -o awscli-bundle.zip
-RUN unzip awscli-bundle.zip
-RUN ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
+RUN \
+      curl --location https://s3.amazonaws.com/aws-cli/awscli-bundle.zip -o awscli-bundle.zip && \
+      apt-get install -y unzip && \
+      unzip awscli-bundle.zip && \
+      apt-get remove -y unzip && \
+      ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws && \
+      rm -rf awscli-bundle*
+
+# Watchman
+RUN \
+      curl --location https://github.com/facebook/watchman/archive/v4.5.0.tar.gz -o watchman.tar.gz && \
+      tar zxvf watchman.tar.gz && \
+      cd watchman-* && \
+      ./autogen.sh && \
+      ./configure && \
+      apt-get install -y python-dev && \
+      make && \
+      apt-get remove -y python-dev && \
+      make install && \
+      cd .. && \
+      rm -rf watchman*
