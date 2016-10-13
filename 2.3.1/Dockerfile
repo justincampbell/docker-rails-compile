@@ -15,6 +15,9 @@ RUN apt-get install -y nodejs
 RUN npm install -g bower
 RUN echo '{ "allow_root": true }' > /root/.bowerrc
 
+# Yarn
+RUN npm install -g yarn
+
 # Ember CLI
 RUN npm install -g ember-cli
 
