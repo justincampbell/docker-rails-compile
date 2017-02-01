@@ -1,4 +1,4 @@
-VERSIONS := 2.2.3 2.3.1
+VERSIONS := 2.2.3 2.3.3
 
 template:
 	rm -rf **/Dockerfile
