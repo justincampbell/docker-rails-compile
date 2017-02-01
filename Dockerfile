@@ -22,24 +22,26 @@ RUN npm install -g yarn
 RUN npm install -g ember-cli
 
 # aws-cli
+RUN apt-get install -y python-dev unzip
 RUN \
       curl --location https://s3.amazonaws.com/aws-cli/awscli-bundle.zip -o awscli-bundle.zip && \
-      apt-get install -y unzip && \
       unzip awscli-bundle.zip && \
-      apt-get remove -y unzip && \
       ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws && \
       rm -rf awscli-bundle*
 
 # Watchman
+RUN apt-get install -y python-dev
 RUN \
-      curl --location https://github.com/facebook/watchman/archive/v4.5.0.tar.gz -o watchman.tar.gz && \
+      curl --location https://github.com/facebook/watchman/archive/v4.7.0.tar.gz -o watchman.tar.gz && \
       tar zxvf watchman.tar.gz && \
       cd watchman-* && \
       ./autogen.sh && \
       ./configure && \
       apt-get install -y python-dev && \
       make && \
-      apt-get remove -y python-dev && \
       make install && \
       cd .. && \
       rm -rf watchman*
+
+# Cleanup
+RUN apt-get remove -y python-dev unzip
